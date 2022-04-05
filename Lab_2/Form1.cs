@@ -122,6 +122,7 @@ namespace Lab_2
         {
             if (listView1.Items.Count < 6)
             {
+                //add
                 add_to_list_View(new PointF((float)numericUpDown1.Value, (float)numericUpDown2.Value));
             }
         }
