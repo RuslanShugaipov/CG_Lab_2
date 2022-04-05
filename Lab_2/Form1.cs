@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Lab_2
 {
@@ -34,7 +35,7 @@ namespace Lab_2
                 * (float)Math.Pow(t, i) * (float)Math.Pow(1 - t, n - i));
         }
 
-        PointF[] points = new PointF[]
+        private List<PointF> points = new List<PointF>
         {
                 new PointF(50, 100),
                 new PointF(75, 120),
@@ -54,9 +55,9 @@ namespace Lab_2
             {
                 float x = 0;
                 float y = 0;
-                for (int i = 0; i < points.Length; ++i)
+                for (int i = 0; i < points.Count; ++i)
                 {
-                    float b = coefficient_B(i, points.Length - 1, t);
+                    float b = coefficient_B(i, points.Count - 1, t);
                     x += points[i].X * b;
                     y += points[i].Y * b;
                 }
@@ -94,7 +95,8 @@ namespace Lab_2
         private void button1_Click(object sender, EventArgs e)
         {
             arr = bezier();
-            for (int i = 0; i < points.Length; ++i)
+            listView1.Items.Clear();
+            for (int i = 0; i < points.Count; ++i)
             {
                 add_to_list_View(points[i]);
             }
@@ -106,6 +108,7 @@ namespace Lab_2
             using (var g = Graphics.FromImage(pictureBox1.Image))
             {
                 g.Clear(pictureBox1.BackColor);
+                points.Clear();
                 pictureBox1.Invalidate();
                 listView1.Items.Clear();
             }
@@ -122,8 +125,11 @@ namespace Lab_2
         {
             if (listView1.Items.Count < 6)
             {
-                //add
                 add_to_list_View(new PointF((float)numericUpDown1.Value, (float)numericUpDown2.Value));
+                if (points.Count < 6)
+                {
+                    points.Add(new PointF((float)numericUpDown1.Value, (float)numericUpDown2.Value));
+                }
             }
         }
     }
