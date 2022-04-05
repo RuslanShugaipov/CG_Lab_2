@@ -1,0 +1,10 @@
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\bin\Debug\Lab_2.exe.config
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\bin\Debug\Lab_2.exe
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\bin\Debug\Lab_2.pdb
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\obj\Debug\Lab_2.csprojAssemblyReference.cache
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\obj\Debug\Lab_2.Form1.resources
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\obj\Debug\Lab_2.Properties.Resources.resources
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\obj\Debug\Lab_2.csproj.GenerateResource.cache
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\obj\Debug\Lab_2.csproj.CoreCompileInputs.cache
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\obj\Debug\Lab_2.exe
+C:\Users\Руслан\OneDrive\Документы\Visual Studio 2019\Projects\Lab_2\Lab_2\obj\Debug\Lab_2.pdb
