@@ -1,26 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using System.Threading;
 
 namespace Lab_2
 {
     public partial class Form1 : Form
     {
-        private Graphics graphics;
-
         public Form1()
         {
             InitializeComponent();
+            InitializeTimer();
+            pictureBox1.Image = new Bitmap(450, 450);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(pictureBox1_Paint);
+
         }
 
         private int factorial(int n)
@@ -39,7 +34,8 @@ namespace Lab_2
                 * (float)Math.Pow(t, i) * (float)Math.Pow(1 - t, n - i));
         }
 
-        private void draw_Bezier()
+
+        private PointF[] bezier()
         {
             PointF[] points = new PointF[]
             {
@@ -66,21 +62,49 @@ namespace Lab_2
                     y += points[i].Y * b;
                 }
                 result[j] = new PointF(x, y);
-                if (j >= 1)
-                {
-                    graphics.DrawLines(new Pen(Color.Black), new PointF[] { result[j - 1], result[j] });
-                    Thread.Sleep(50);
-                }
                 ++j;
             }
-            //graphics.DrawLines(new Pen(Color.Red), points);
-            //graphics.DrawLines(new Pen(Color.Black), result);
+            return result;
         }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        private void InitializeTimer()
         {
-            graphics = e.Graphics;
-            draw_Bezier();
+            timer1.Interval = 50;
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Enabled = false;
+        }
+
+        private int i = 0;
+        private PointF[] arr = new PointF[] { };
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            using (var g = Graphics.FromImage(pictureBox1.Image))
+            {
+                g.DrawLine(new Pen(Color.Black), arr[i], arr[i + 1]);
+                pictureBox1.Invalidate();
+                ++i;
+                if (i == arr.Length - 1)
+                {
+                    timer1.Enabled = false;
+                    i = 0;
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            arr = bezier();
+            timer1.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (var g = Graphics.FromImage(pictureBox1.Image))
+            {
+                g.Clear(pictureBox1.BackColor);
+                pictureBox1.Invalidate();
+            }
         }
     }
 }
