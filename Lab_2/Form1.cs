@@ -100,6 +100,10 @@ namespace Lab_2
             {
                 add_to_list_View(points[i]);
             }
+            using (var g = Graphics.FromImage(pictureBox1.Image))
+            {
+                g.DrawLines(new Pen(Color.Red), points.ToArray());
+            }
             timer1.Enabled = true;
         }
 
