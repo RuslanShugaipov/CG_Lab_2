@@ -34,19 +34,18 @@ namespace Lab_2
                 * (float)Math.Pow(t, i) * (float)Math.Pow(1 - t, n - i));
         }
 
-
-        private PointF[] bezier()
+        PointF[] points = new PointF[]
         {
-            PointF[] points = new PointF[]
-            {
                 new PointF(50, 100),
                 new PointF(75, 120),
                 new PointF(60, 80),
                 new PointF(100, 50),
                 new PointF(90, 150),
                 new PointF(30, 130),
-            };
+        };
 
+        private PointF[] bezier()
+        {
             int j = 0;
             float step = 0.01f;
 
@@ -95,6 +94,10 @@ namespace Lab_2
         private void button1_Click(object sender, EventArgs e)
         {
             arr = bezier();
+            for (int i = 0; i < points.Length; ++i)
+            {
+                add_to_list_View(points[i]);
+            }
             timer1.Enabled = true;
         }
 
@@ -104,6 +107,22 @@ namespace Lab_2
             {
                 g.Clear(pictureBox1.BackColor);
                 pictureBox1.Invalidate();
+                listView1.Items.Clear();
+            }
+        }
+
+        private void add_to_list_View(PointF point)
+        {
+            ListViewItem item = new ListViewItem(point.X.ToString());
+            item.SubItems.Add(point.Y.ToString());
+            listView1.Items.Add(item);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listView1.Items.Count < 6)
+            {
+                add_to_list_View(new PointF((float)numericUpDown1.Value, (float)numericUpDown2.Value));
             }
         }
     }
